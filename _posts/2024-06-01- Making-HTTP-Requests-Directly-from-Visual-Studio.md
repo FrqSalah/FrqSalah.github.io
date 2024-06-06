@@ -58,7 +58,7 @@ Content-Type: application/json
 
 - Environments: 
 Create and switch between environments (dev, staging, production) with different configuration settings using .env files.
-![Select enviroment for http requests](../_imgs/http-env-visualtudio.jpeg)
+![Select enviroment for http requests](../assets/img/http-env-visualtudio.jpeg)
 
 Effective API testing doesn't have to break the bank.  While many tools boast comprehensive capabilities, they often come with hefty price tags and limitations on team collaboration.
 
