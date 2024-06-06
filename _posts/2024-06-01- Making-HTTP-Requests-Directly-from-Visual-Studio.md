@@ -32,15 +32,14 @@ Project Context: Easily reference project variables, secrets, and settings withi
 
 - Fetching User Data (GET)
 
-```json
+```
 HTTP
 GET https://api.example.com/users/123
 Authorization: Bearer YOUR_API_TOKEN 
 ```
 - Creating a New Resource (POST)
 
-{% highlight json linenos %}
-HTTP
+```HTTP
 @apiUrl = https://api.example.com
 
 POST {{apiUrl}}/products 
@@ -50,8 +49,7 @@ Content-Type: application/json
     "name": "Awesome Product",
     "price": 49.99
 }
-{% endhighlight %}
-
+```
 
 ### Beyond the Basics:
 - Endpoints Explorer: Visual Studio 2022's Endpoints Explorer (currently in preview) auto-discovers your API endpoints, making it easier to get started with testing.
