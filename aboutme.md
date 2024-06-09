@@ -4,13 +4,19 @@ title: About me
 subtitle: Why you'd want to go on a date with me
 ---
 
-My name is Inigo Montoya. I have the following qualities:
+My name is Salah. I a software engineer since 2010? I'm :  
 
-- I rock a great mustache
-- I'm extremely loyal to my family
+• .NET Software Engineer passionate about technology
+• I work on Restful APIs, WebAPI, Apigee, Blazor, .NET MAUI, ASP.NET, .NET Core, 
+• Experienced in microservice development and design. 
+• DDD, CQRS, N-TIER & TDD
+• I use C#, SQL & T-SQL (SQL Server, MySQL)
+• I also use ElasticSearch, Kibana, Dynatrace, Apache Nifi
+• I have some experience using  Azure and GCP
+• Curious, self-taught and passionate, my job as a computer engineer perfectly matches my personality
 
 What else do you need?
 
 ### My story
 
-To be honest, I'm having some trouble remembering right now, so why don't you just watch [my movie](https://en.wikipedia.org/wiki/The_Princess_Bride_%28film%29) and it will answer **all** your questions.
+Just check my linkedIn profile [my linkedin](https://www.linkedin.com/in/salaheddinefouraq/) and it will answer **all** your questions about my experience.
