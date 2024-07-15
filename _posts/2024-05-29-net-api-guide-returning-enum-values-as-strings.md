@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  ".NET API Guide: Returning Enum Values as Strings"
+title: ".NET API Guide: Returning Enum Values as Strings"
 tags: csharp swagger dotnet guide
 category: csharp
 ---
