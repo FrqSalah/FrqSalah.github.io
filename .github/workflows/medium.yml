@@ -5,27 +5,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - id: files
-        uses: jitterbit/get-changed-files@v1
-
-      - id: posts
-        name: Detecting posts from the changes
-        run: |
-          i=0
-          for changed_file in ${{ steps.files.outputs.added_modified }}; do
-            echo "Do something with ${changed_file}."
-            if [[ "${changed_file}" == "content/posts"* ]]; then
-              echo "File ${changed_file} matched post."
-              echo "post${i}=${changed_file}" >> $GITHUB_ENV
-              ((i=i+1))
-            fi
-          done
-
-      - name: Publish to medium
-        if: env.post0
-        uses: infraway/post-medium-action@v1.6.0
+      - uses: infraway/medium-post-markdown@v1.5.0
         with:
           access_token: ${{ secrets.MEDIUM_ACCESS_TOKEN }}
-          markdown_file: ${{ env.post0 }}
-          base_url: https://myblog.com
-          post_url: https://myblog.com/posts
+          markdown_file: ${{ ${{ github.event.inputs.markdown_file }}
