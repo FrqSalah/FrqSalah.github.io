@@ -1,4 +1,4 @@
-            - name: Markdown Or Hugo To Medium
+name: Markdown Or Hugo To Medium
   # You may pin to the exact commit or the version.
   # uses: imrushi/markdown-or-hugo-to-medium@451f63720d1bc6fb32a7d856adbae5c90ac16c40
   uses: imrushi/markdown-or-hugo-to-medium@v1.1.1
