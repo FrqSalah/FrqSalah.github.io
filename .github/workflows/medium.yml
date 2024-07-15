@@ -5,7 +5,7 @@ on:
       markdown_file:
         description: 'Path to the markdown file to publish'
         required: true
-        default: '_posts/post.md'
+        default: './_posts/post.md'
   push:
     paths:
       - '_posts/**'
@@ -20,5 +20,5 @@ jobs:
       - name: Publish to Medium
         uses: infraway/medium-post-markdown@v1.6.0
         with:
-          access_token: ${{ secrets.MEDIUM_ACCESS_TOKEN }}
+          access_token: ${{ secrets.MEDIUM_INTEGRATION_TOKEN }}
           markdown_file: ${{ github.event.inputs.markdown_file }}
