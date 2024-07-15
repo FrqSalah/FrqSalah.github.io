@@ -6,7 +6,7 @@ on:
       markdown_file:
         description: 'Path to the markdown file to publish'
         required: true
-        default: '_posts/post.md'
+        default: './_posts/'
   push:
     paths:
       - '_posts/**'
@@ -30,4 +30,7 @@ jobs:
         uses: infraway/medium-post-markdown@v1.6.0
         with:
           access_token: ${{ secrets.MEDIUM_INTEGRATION_TOKEN }}
-          markdown_file: ${{ github.event.inputs.markdown_file }}
+          markdown_file: ${{ inputs.markdown_file }}
+          post_status: draft
+          post_license: all-rights-reserved
+
