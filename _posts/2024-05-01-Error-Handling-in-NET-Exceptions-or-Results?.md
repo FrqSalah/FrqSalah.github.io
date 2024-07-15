@@ -135,7 +135,7 @@ public class OrderProcessor
 
 Instead of using try-catch blocks, we now check the IsSuccess property of the returned Results. This makes the error handling more explicit and easier to follow.
 
-```csharp#
+```csharp
 // Usage example
 public void ProcessOrderExample()
 {
