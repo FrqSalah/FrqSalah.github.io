@@ -20,5 +20,5 @@ jobs:
       - name: Publish to Medium
         uses: infraway/medium-post-markdown@v1.6.0
         with:
-          access_token: ${{ secrets.MEDIUM_ACCESS_TOKEN }}
+          access_token: ${{ secrets.MEDIUM_INTEGRATION_TOKEN }}
           markdown_file: ${{ github.event.inputs.markdown_file }}
