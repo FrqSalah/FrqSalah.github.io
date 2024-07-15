@@ -31,6 +31,3 @@ jobs:
         with:
           access_token: ${{ secrets.MEDIUM_INTEGRATION_TOKEN }}
           markdown_file: ${{ inputs.markdown_file }}
-          post_status: draft
-          post_license: all-rights-reserved
-
