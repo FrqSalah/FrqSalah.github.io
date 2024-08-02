@@ -21,7 +21,5 @@ jobs:
         url: 'https://api.medium.com/v1/users/18f907be07187a63afa513c13af5c297225d568dcd2b4c14d85d1b7ba3f792b06/posts'
         method: 'POST'
         customHeaders: '{"Content-Type": "application/json", "Authorization": "Bearer 257a8fdc02f841c6694639fdbc487aa099919c38b08f28c216f29fc8280221fbe"}'
-        title: '"Hard things in software development"',
-        contentFormat: '"markdown"',
-        content: ${{ steps.posts.outputs.post0 }},
+        data :'{title: '"Hard things in software development", contentFormat: "markdown", content: ${{ steps.posts.outputs.post0 }}}'
         
