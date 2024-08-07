@@ -1,25 +1,39 @@
-name: publish-to-medium
+name: Send New Markdown to API
 
 on:
-  workflow_dispatch:
-    inputs:
-      markdown_file:
-        description: 'Path to the markdown file to publish'
-        required: true
-        default: './_posts/'
   push:
     paths:
-      - '_posts/**'
+      - '../../_posts/*.md'
 
 jobs:
-  deployment:
+  send-markdown:
     runs-on: ubuntu-latest
     steps:
-    - name: Deploy Stage
-      uses: fjogeleit/http-request-action@v1
+    - name: Checkout code
+      uses: actions/checkout@v3
       with:
-        url: 'https://api.medium.com/v1/users/18f907be07187a63afa513c13af5c297225d568dcd2b4c14d85d1b7ba3f792b06/posts'
-        method: 'POST'
-        customHeaders: '{"Content-Type": "application/json", "Authorization": "Bearer 257a8fdc02f841c6694639fdbc487aa099919c38b08f28c216f29fc8280221fbe"}'
-        data :'{title: '"Hard things in software development", contentFormat: "markdown", content: ${{ steps.posts.outputs.post0 }}}'
-        
+        fetch-depth: 2
+
+    - name: Get changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v35
+      with:
+        files: ../../_posts/*.md
+
+    - name: Send new Markdown files to API
+      env:
+        API_URL: 'https://medium.azurewebsites.net/api/Publisher'
+      run: |
+        for file in ${{ steps.changed-files.outputs.added_files }}; do
+          if [[ $file == posts/*.md ]]; then
+            echo "Processing new file: $file"
+            content=$(cat "$file")
+            response=$(curl -X POST -H "Content-Type: text/markdown" --data-binary "@$file" "$API_URL")
+            echo "API Response for $file: $response"
+          fi
+        done
+
+    - name: Check for errors
+      if: failure()
+      run: |
+        echo "An error occurred during the workflow execution."
