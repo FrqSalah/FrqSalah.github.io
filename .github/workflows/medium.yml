@@ -1,39 +1,24 @@
-name: Send New Markdown to API
+name: publish-file-to-medium
 
 on:
-  push:
-    paths:
-      - '_posts/*.md'
+  workflow_dispatch:
+    inputs:
+      file_path:
+        description: 'Path to the file to publish'
+        required: true
 
 jobs:
-  send-markdown:
+  publish:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 2
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-    - name: Get changed files
-      id: changed-files
-      uses: tj-actions/changed-files@v35
-      with:
-        files: _posts/*.md
-
-    - name: Send new Markdown files to API
-      env:
-        API_URL: 'https://medium.azurewebsites.net/api/Publisher'
+    - name: Read file content
+      id: read_file
       run: |
-        for file in ${{ steps.changed-files.outputs.added_files }}; do
-          if [[ $file == posts/*.md ]]; then
-            echo "Processing new file: $file"
-            content=$(cat "$file")
-            response=$(curl -X POST -H "Content-Type: text/markdown" --data-binary "@$file" "$API_URL")
-            echo "API Response for $file: $response"
-          fi
-        done
-
-    - name: Check for errors
-      if: failure()
-      run: |
-        echo "An error occurred during the workflow execution."
+        content=$(cat ${{ github.event.inputs.file_path }})
+        content="${content//'%'/'%25'}"
+        content="${content//$'\n'/'%0A'}"
+        content="${content//$'\r'/'%0D'}"        
+        echo "::set-output name=content::$content"   
