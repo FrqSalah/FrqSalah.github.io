@@ -23,3 +23,14 @@ jobs:
         content="${content//$'\r'/'%0D'}"        
         echo "::set-output name=content::$content"   
         echo "$content"
+        
+    - name: Deploy to Medium
+      uses: fjogeleit/http-request-action@v1
+      with:
+        url: 'https://medium.azurewebsites.net/api/Publisher'
+        method: 'POST'
+        customHeaders: '{"Content-Type": "text/markdown"}'
+        data: |
+          {
+            "content": $content
+          }
