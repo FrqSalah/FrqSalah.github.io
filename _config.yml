@@ -20,7 +20,7 @@ author: Salah
 ###############################################
 
 navbar-links:
-  About Me: "Resumé"
+  Resumé: "aboutme"
 
 ################
 # --- Logo --- #
